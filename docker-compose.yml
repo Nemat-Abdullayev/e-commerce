@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  APP:
+    container_name: 'ecommerce'
+    image: 'ecommerce'
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - Postgres
+    links:
+      - "db:redis"
+  Postgres:
+    image: postgres
+    container_name: 'postgres'
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=postgres
+  db:
+    hostname: redis
+    container_name: 'redis'
+    image: 'redis:alpine'
+    ports:
+      - "6379:6379"
