@@ -26,7 +26,6 @@ public class CoinChange {
                 changeCoins.add(availableCoins[counter]);
             }
             counter++;
-            depositChange(change);
         }
         return changeCoins;
     }
