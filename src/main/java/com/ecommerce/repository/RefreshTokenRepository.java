@@ -13,6 +13,6 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long
 
     Optional<RefreshToken> findByUserIdAndActiveTrue(Long userId);
 
-    @Query(value = "select rt.refreshToken from RefreshToken rt where rt.id=:userId and rt.active=true")
+    @Query(value = "select rt.refreshToken from RefreshToken rt where rt.userId=:userId and rt.active=true")
     String findRefreshTokenByUserId(Long userId);
 }
